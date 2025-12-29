@@ -16,7 +16,7 @@ jobs:
       - name: Checkout selected branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.branch }}
+          ref: ${{ inputs.branch }}  # Fixed: use 'inputs.branch' (not github.event.inputs)
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -30,10 +30,10 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to Netlify
+      - name: Deploy to Netlify (Production)
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=build --prod
+          args: deploy --dir=build --prod --message="Manual deploy from branch ${{ inputs.branch }} (commit ${{ github.sha }})"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
