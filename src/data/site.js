@@ -2,7 +2,7 @@
 // Consumers: Header (brand name, nav), Footer (optional), others.
 
 export const site = {
-  name: "Iswar Rana",
+  name: "Iswar Ch. Rana",
   // Navigation items rendered in Header (desktop + mobile) and optionally Footer
   navItems: [
     { label: "About", sectionId: "about" },
