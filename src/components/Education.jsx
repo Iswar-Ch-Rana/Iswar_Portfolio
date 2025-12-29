@@ -1,0 +1,31 @@
+import React from 'react';
+import { education } from '../data/education';
+
+const Education = () => {
+  return (
+    <section id="education" className="py-16 sm:py-20 lg:py-24">
+      <div className="container">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">Education</h2>
+        </div>
+
+        <div className="space-y-4">
+          {education.map((item, idx) => (
+            <div key={idx} className="rounded-md border border-border bg-card p-5 shadow-sm">
+              <h3 className="text-lg font-semibold">{item.degree}</h3>
+              <h4 className="text-sm text-muted-foreground">{item.institution}</h4>
+              {item.period && (
+                <p className="text-xs text-muted-foreground mt-1">{item.period}</p>
+              )}
+              {item.extra && (
+                <p className="mt-2">{item.extra}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Education;
